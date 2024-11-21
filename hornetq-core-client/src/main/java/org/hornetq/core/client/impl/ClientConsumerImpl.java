@@ -13,6 +13,7 @@
 package org.hornetq.core.client.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Iterator;
@@ -639,6 +640,17 @@ public final class ClientConsumerImpl implements ClientConsumerInternal
       }
    }
 
+   private File createLargeMessageCache(long messageId) throws IOException
+   {
+      File largeMessageCache = File.createTempFile("tmp-large-message-" + messageId + "-", ".tmp");
+      largeMessageCache.setReadable(false);
+      largeMessageCache.setExecutable(false);
+      largeMessageCache.setWritable(false);
+      largeMessageCache.setReadable(true, true);
+      largeMessageCache.setWritable(true, true);
+      largeMessageCache.deleteOnExit();
+      return largeMessageCache;
+   }
    /**
     * This method deals with messages arrived as regular message but its contents are compressed.
     * Such messages come from message senders who are configured to compress large messages, and
@@ -662,9 +674,7 @@ public final class ClientConsumerImpl implements ClientConsumerInternal
 
       if (session.isCacheLargeMessageClient())
       {
-         largeMessageCache = File.createTempFile("tmp-large-message-" + largeMessage.getMessageID() + "-",
-                                                 ".tmp");
-         largeMessageCache.deleteOnExit();
+         largeMessageCache = createLargeMessageCache(largeMessage.getMessageID());
       }
 
       ClientSessionFactory sf = session.getSessionFactory();
@@ -705,9 +715,7 @@ public final class ClientConsumerImpl implements ClientConsumerInternal
 
       if (session.isCacheLargeMessageClient())
       {
-         largeMessageCache = File.createTempFile("tmp-large-message-" + currentChunkMessage.getMessageID() + "-",
-                                                 ".tmp");
-         largeMessageCache.deleteOnExit();
+         largeMessageCache = createLargeMessageCache( currentChunkMessage.getMessageID());
       }
 
       ClientSessionFactory sf = session.getSessionFactory();
