@@ -242,7 +242,9 @@
                           <goal>single</goal>
                       </goals>
                       <configuration>
-                          <descriptor>src/test/resources/rest/bwlist-rest-test-asm.xml</descriptor>
+                          <descriptors>
+                              <descriptor>src/test/resources/rest/bwlist-rest-test-asm.xml</descriptor>
+                          </descriptors>
                           <finalName>rest-test-bwlist</finalName>
                           <appendAssemblyId>false</appendAssemblyId>
                           <outputDirectory>target/test-classes/rest/</outputDirectory>
@@ -255,7 +257,9 @@
                           <goal>single</goal>
                       </goals>
                       <configuration>
-                          <descriptor>src/test/resources/rest/rest-test-asm.xml</descriptor>
+                          <descriptors>
+                              <descriptor>src/test/resources/rest/rest-test-asm.xml</descriptor>
+                          </descriptors>
                           <finalName>rest-test</finalName>
                           <appendAssemblyId>false</appendAssemblyId>
                           <outputDirectory>target/test-classes/rest/</outputDirectory>
