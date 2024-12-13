@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.hornetq</groupId>
     <artifactId>hornetq-pom</artifactId>
     <packaging>pom</packaging>
-    <version>2.4.x-SNAPSHOT</version>
+    <version>2.4.11.Final</version>
 
     <name>HornetQ Parent</name>
     <url>http://hornetq.org</url>
@@ -74,7 +73,8 @@
         <connection>scm:git:git://github.com/hornetq/hornetq.git</connection>
         <developerConnection>scm:git://github.com/hornetq/hornetq.git</developerConnection>
         <url>https://github.com/hornetq/hornetq</url>
-    </scm>
+      <tag>2.4.11.Final</tag>
+  </scm>
 
     <distributionManagement>
         <repository>
@@ -308,7 +308,7 @@
                 <!-- there is a new version of this JAR but it breaks our usage of it -->
                 <version>2.1.2</version>
             </dependency>
-            <!---->
+            
 
             <dependency>
                 <groupId>org.apache.qpid</groupId>
@@ -770,7 +770,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>cobertura-maven-plugin</artifactId>
-                    <configuration/>
+                    <configuration />
                     <executions>
                         <execution>
                             <goals>
@@ -912,7 +912,7 @@
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.5.2</version>
                 <configuration>
-                    <check/>
+                    <check />
                     <formats>
                         <format>html</format>
                         <format>xml</format>
